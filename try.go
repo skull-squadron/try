@@ -11,7 +11,7 @@ type CatchFunc func(origErr error) (caught bool, newRes interface{}, newErr erro
 // cfs are the catch blocks, tried one at a time
 // tf is the function to run safely
 // res is desired output result(s)
-func Try(tf TryFunc, cfs []CatchFunc, args ...interface{}) (res interface{}, err error) {
+func Catch(tf TryFunc, cfs []CatchFunc, args ...interface{}) (res interface{}, err error) {
 	wait := make(chan interface{})
 	go func() { // try func
 		defer func() { // recover func
